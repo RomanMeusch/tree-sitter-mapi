@@ -1,0 +1,133 @@
+================================================================================
+Field defaults
+================================================================================
+
+struct Job {
+    /// Unix timestamp (ms).
+    #[json_number]
+    archive_at: u64 = 0,
+    messaging_product: String = "whatsapp",
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (item
+    (struct_item
+      name: (identifier)
+      (field_block
+        (doc_comment)
+        (field
+          (attribute (meta name: (path (identifier))))
+          name: (identifier)
+          type: (type name: (path (identifier)))
+          default: (integer))
+        (field
+          name: (identifier)
+          type: (type name: (path (identifier)))
+          default: (string))))))
+
+================================================================================
+Union return types with payloads
+================================================================================
+
+interface Files {
+    #[post("/")]
+    fn upload(#[body] data: Bytes) -> FileHandle | BadRequest(ErrorResp);
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (item
+    (interface_item
+      name: (identifier)
+      (function_item
+        (attribute (meta name: (path (identifier)) (string)))
+        name: (identifier)
+        (parameter
+          (attribute (meta name: (path (identifier))))
+          name: (identifier)
+          type: (type name: (path (identifier))))
+        return_type: (return_type
+          (type name: (path (identifier)))
+          (type
+            name: (path (identifier))
+            payload: (tuple_fields (type name: (path (identifier))))))))))
+
+================================================================================
+Const items with struct and call expressions
+================================================================================
+
+#![crate("jobsite")]
+
+const OAUTH: Auth = Auth::OAuth2 {
+    scopes: ["openid", "email"],
+    cookie: "x",
+};
+
+const TENANT: Scope<Id> = Scope::Header("X-Tenant-ID");
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (inner_attribute (meta name: (path (identifier)) (string)))
+  (item
+    (const_item
+      name: (identifier)
+      type: (type name: (path (identifier)))
+      value: (struct_expression
+        name: (path (identifier) (identifier))
+        (field_initializer
+          name: (identifier)
+          value: (array_expression (string) (string)))
+        (field_initializer
+          name: (identifier)
+          value: (string)))))
+  (item
+    (const_item
+      name: (identifier)
+      type: (type
+        name: (path (identifier))
+        (type_arguments (type name: (path (identifier)))))
+      value: (call_expression
+        function: (path (identifier) (identifier))
+        (string)))))
+
+================================================================================
+Attributes with ranges, assignments, and nested metas
+================================================================================
+
+#[range(1..=5)]
+#[cached(public, max_age = 31536000, immutable)]
+#[static_header("Link", response = "</app.css>; rel=\"preload\"")]
+enum E {
+    A,
+    B(String),
+    C { loc: String },
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (item
+    (attribute (meta name: (path (identifier)) (range (integer) (integer))))
+    (attribute
+      (meta
+        name: (path (identifier))
+        (meta name: (path (identifier)))
+        (meta_assignment key: (identifier) value: (integer))
+        (meta name: (path (identifier)))))
+    (attribute
+      (meta
+        name: (path (identifier))
+        (string)
+        (meta_assignment key: (identifier) value: (string))))
+    (enum_item
+      name: (identifier)
+      (variant name: (identifier))
+      (variant name: (identifier) (tuple_fields (type name: (path (identifier)))))
+      (variant
+        name: (identifier)
+        (field_block
+          (field name: (identifier) type: (type name: (path (identifier)))))))))

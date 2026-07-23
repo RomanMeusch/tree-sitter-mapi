@@ -1,0 +1,24 @@
+{
+  "grammars": [
+    {
+      "name": "mapi",
+      "camelcase": "Mapi",
+      "scope": "source.mapi",
+      "path": ".",
+      "file-types": ["mapi"],
+      "highlights": "queries/highlights.scm",
+      "injection-regex": "^mapi$"
+    }
+  ],
+  "metadata": {
+    "version": "0.1.0",
+    "license": "MIT",
+    "description": "mapi IDL grammar for tree-sitter",
+    "authors": [
+      {
+        "name": "Roman Meusch",
+        "email": "r.meusch@scaleunit.de"
+      }
+    ]
+  }
+}
