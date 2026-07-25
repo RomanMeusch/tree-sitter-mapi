@@ -59,7 +59,7 @@ interface Files {
 Const items with struct and call expressions
 ================================================================================
 
-#![crate("jobsite")]
+#![crate("example")]
 
 const OAUTH: Auth = Auth::OAuth2 {
     scopes: ["openid", "email"],

@@ -19,6 +19,9 @@
         "name": "Roman Meusch",
         "email": "r.meusch@scaleunit.de"
       }
-    ]
+    ],
+    "links": {
+      "repository": "https://github.com/RomanMeusch/tree-sitter-mapi"
+    }
   }
 }
