@@ -445,6 +445,10 @@
         {
           "type": "type_item",
           "named": true
+        },
+        {
+          "type": "webhook_item",
+          "named": true
         }
       ]
     }
@@ -836,6 +840,21 @@
     }
   },
   {
+    "type": "webhook_item",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "function_item",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "#![",
     "named": false
   },
@@ -945,6 +964,10 @@
   },
   {
     "type": "type",
+    "named": false
+  },
+  {
+    "type": "webhook",
     "named": false
   },
   {

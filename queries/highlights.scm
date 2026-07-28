@@ -7,6 +7,7 @@
   "struct"
   "enum"
   "interface"
+  "webhook"
   "fn"
 ] @keyword
 

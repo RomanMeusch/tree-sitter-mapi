@@ -131,3 +131,28 @@ enum E {
         name: (identifier)
         (field_block
           (field name: (identifier) type: (type name: (path (identifier)))))))))
+
+================================================================================
+Top-level webhook fn
+================================================================================
+
+#[post]
+#[auth(SIG)]
+webhook fn events(#[body] body: Payload) -> Ok | BadRequest(ErrorResp);
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (item
+    (attribute (meta name: (path (identifier))))
+    (attribute (meta name: (path (identifier)) (meta name: (path (identifier)))))
+    (webhook_item
+      (function_item
+        name: (identifier)
+        (parameter
+          (attribute (meta name: (path (identifier))))
+          name: (identifier)
+          type: (type name: (path (identifier))))
+        return_type: (return_type
+          (type name: (path (identifier)))
+          (type name: (path (identifier)) payload: (tuple_fields (type name: (path (identifier))))))))))
