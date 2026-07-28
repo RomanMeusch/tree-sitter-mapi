@@ -51,6 +51,10 @@
             {
               "type": "SYMBOL",
               "name": "interface_item"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "webhook_item"
             }
           ]
         }
@@ -606,6 +610,19 @@
         {
           "type": "STRING",
           "value": ";"
+        }
+      ]
+    },
+    "webhook_item": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "webhook"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "function_item"
         }
       ]
     },

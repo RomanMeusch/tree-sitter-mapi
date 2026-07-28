@@ -29,6 +29,7 @@ module.exports = grammar({
           $.struct_item,
           $.enum_item,
           $.interface_item,
+          $.webhook_item,
         ),
       ),
 
@@ -112,6 +113,10 @@ module.exports = grammar({
         optional(seq('->', field('return_type', $.return_type))),
         ';',
       ),
+
+    // A top-level `webhook fn …;` — an inbound notification. Reuses the
+    // function signature; leading attributes are consumed by `item`.
+    webhook_item: ($) => seq('webhook', $.function_item),
 
     parameter: ($) =>
       seq(
